@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/Woshiajuana/template-multi-html#readme",
   "devDependencies": {
-    "webpack": "^5.6.0",
-    "webpack-cli": "^4.2.0"
+    "node-dir": "^0.1.17",
+    "require-context": "^1.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }

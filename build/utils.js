@@ -1,26 +1,33 @@
 
 const path = require('path');
-const fs = require('fs');
+
+const nodeDir = require('node-dir');
 
 /**
- * 变量目录
- * @param dir [String]
- * @param options [Object]
+ * 遍历文件目录
+ * @param directory {String}
+ * @param recursive {Boolean}
+ * @param regExp {RegExp}
+ * @return {Array}
  * */
-function traverseDir (dir = '', options = {}) {
-    console.log('dir => ', dir);
-    // let { include, exclude } = Object.assign({}, options);
-    // let loop =
-    // fs.readdir(dir, (err, files) => {
-    //     console.log('files => ', files);
-    // });
-
-    const data = require.context(dir, true, /\.js$/);
-    data.keys().forEach(key => {
-        callback && callback(key, data(key));
-    });
+function requireFile (directory = '', recursive, regExp) {
+    if (directory[0] === '.') {
+        // Relative path
+        directory = path.join(__dirname, directory)
+    } else if (!path.isAbsolute(directory)) {
+        // Module path
+        directory = require.resolve(directory)
+    }
+    return nodeDir
+        .files(directory, {
+            sync: true,
+            recursive: recursive || false
+        })
+        .filter((file) =>  {
+            return file.match(regExp || /\.(json|js)$/)
+        });
 }
 
 module.exports = {
-    traverseDir,
+    requireFile,
 };

@@ -1,16 +1,26 @@
 
 const path = require('path');
-const fs = require('fs');
 
-const { traverseDir } = require('./utils');
+const { requireFile } = require('./utils');
 
-// const data = traverseDir(path.resolve(__dirname, '../src/views/'));
+const rootDirectory = path.resolve(__dirname, '../src/views');
 
-// console.log('data => ', data);
-const data = require.context(path.resolve(__dirname, '../src/views/'), true, /\.js$/);
-data.keys().forEach(key => {
-    callback && callback(key, data(key));
+const entry = {};
+
+requireFile(
+    rootDirectory,
+    true,
+    /\.js$/,
+).forEach((file) => {
+    const key = path.join('.', file.slice(rootDirectory.length + 1))
+        .split(path.sep)
+        .slice()
+        .map((item, index) => { return this.length > index + 1 })
+        .join('_');
+    entry[key] = file;
 });
+
+console.log('entry => ', entry);
 
 module.exports = {
 
