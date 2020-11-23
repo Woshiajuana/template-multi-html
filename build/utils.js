@@ -9,12 +9,17 @@ const fs = require('fs');
  * */
 function traverseDir (dir = '', options = {}) {
     console.log('dir => ', dir);
-    let { include, exclude } = Object.assign({}, options);
-    fs.readdir(dir, (err, files) => {
-        console.log('files => ', files);
+    // let { include, exclude } = Object.assign({}, options);
+    // let loop =
+    // fs.readdir(dir, (err, files) => {
+    //     console.log('files => ', files);
+    // });
+
+    const data = require.context(dir, true, /\.js$/);
+    data.keys().forEach(key => {
+        callback && callback(key, data(key));
     });
 }
-
 
 module.exports = {
     traverseDir,

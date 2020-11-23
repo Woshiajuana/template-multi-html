@@ -4,6 +4,7 @@
   "description": "webpack building multiple page template",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack --config build/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,14 +12,18 @@
     "url": "git+https://github.com/Woshiajuana/template-multi-html.git"
   },
   "keywords": [
-      "webpack",
-      "multi",
-      "multi-html"
+    "webpack",
+    "multi",
+    "multi-html"
   ],
   "author": "ajuan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Woshiajuana/template-multi-html/issues"
   },
-  "homepage": "https://github.com/Woshiajuana/template-multi-html#readme"
+  "homepage": "https://github.com/Woshiajuana/template-multi-html#readme",
+  "devDependencies": {
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
+  }
 }
