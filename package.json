@@ -23,8 +23,13 @@
   },
   "homepage": "https://github.com/Woshiajuana/template-multi-html#readme",
   "devDependencies": {
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
     "node-dir": "^0.1.17",
     "require-context": "^1.1.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }
