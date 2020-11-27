@@ -2,12 +2,12 @@
 const { resolve } = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { generateEntry } = require('./utils');
 
 // 生成入口文件
 const entry = generateEntry(resolve(__dirname, '../src/views'));
+
 // 生成多入口模板 html 文件 插件
 const arrHtmlWebpackPlugin = ((entry) => {
     let result = [];
@@ -17,10 +17,10 @@ const arrHtmlWebpackPlugin = ((entry) => {
             template: entry[key].replace('index.js', 'index.html'),
             minify: {
                 removeAttributeQuotes: false, // 移除属性的引号
-                removeComments: true, // 移除注释
-                collapseWhitespace: true, // 折叠空白区域
+                removeComments: false, // 移除注释
+                collapseWhitespace: false, // 折叠空白区域
             },
-            // chunks: ['commons', key],
+            chunks: [key],
             inject: true,
         });
         result.push(htmlWebpackPlugin);
@@ -39,7 +39,7 @@ module.exports = {
 
     // 出口文件
     output: {
-        filename: 'assets/js/[name].[hash].js',
+        filename: 'assets/js/[name].[hash:10].js',
         path: resolve(__dirname, '../dist'),
     },
 
@@ -110,9 +110,6 @@ module.exports = {
     // 插件
     plugins: [
         ...arrHtmlWebpackPlugin,
-        // new MiniCssExtractPlugin({
-        //     filename: 'css/[name][contenthash:8].css',
-        // }),
     ]
 
 };
