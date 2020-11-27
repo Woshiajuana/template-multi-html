@@ -41,7 +41,7 @@ function generateEntry (directory) {
         true,
         /\.js$/,
     ).forEach((file) => {
-        const keyArr = path.join('.', file.slice(rootDirectory.length + 1))
+        const keyArr = path.join('.', file.slice(directory.length + 1))
             .split(path.sep);
         const key = keyArr
             .slice(0, keyArr.length - 1)

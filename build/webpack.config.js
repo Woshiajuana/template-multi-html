@@ -42,6 +42,13 @@ module.exports = {
         path: resolve(__dirname, '../dist'),
     },
 
+    // 替换路径配置
+    resolve: {
+        alias: {
+            'src': resolve(__dirname, '../src/'),
+        }
+    },
+
     // loader 配置
     module: {
         rules: [
