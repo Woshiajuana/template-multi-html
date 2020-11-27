@@ -28,6 +28,30 @@ function requireFile (directory = '', recursive, regExp) {
         });
 }
 
+
+/**
+ * 生成入口
+ * @param directory {String}
+ * @return {Object}
+ * */
+function generateEntry (directory) {
+    let entry = {};
+    requireFile(
+        directory,
+        true,
+        /\.js$/,
+    ).forEach((file) => {
+        const keyArr = path.join('.', file.slice(rootDirectory.length + 1))
+            .split(path.sep);
+        const key = keyArr
+            .slice(0, keyArr.length - 1)
+            .join('_');
+        entry[key] = file;
+    });
+    return entry;
+}
+
 module.exports = {
     requireFile,
+    generateEntry,
 };

@@ -1,26 +1,37 @@
 
-const path = require('path');
+const { resolve } = require('path');
 
-const { requireFile } = require('./utils');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const rootDirectory = path.resolve(__dirname, '../src/views');
+const { generateEntry } = require('./utils');
 
-const entry = {};
-
-requireFile(
-    rootDirectory,
-    true,
-    /\.js$/,
-).forEach((file) => {
-    const keyArr = path.join('.', file.slice(rootDirectory.length + 1))
-        .split(path.sep);
-    const key = keyArr
-        .slice(0, keyArr.length - 1)
-        .join('_');
-    entry[key] = file;
-});
+// 生成入口文件
+const entry = generateEntry(resolve(__dirname, '../src/views'));
+// 生成多入口模板 html 文件 插件
+const arrHtmlWebpackPlugin = ((entry) => {
+    let result = [];
+    for (let key in entry) {
+        const htmlWebpackPlugin = new HtmlWebpackPlugin({
+            filename: `${key}.html`,
+            template: entry[key].replace('index.js', 'index.html'),
+            minify: {
+                removeAttributeQuotes: false, // 移除属性的引号
+                removeComments: true, // 移除注释
+                collapseWhitespace: true, // 折叠空白区域
+            },
+            // chunks: ['commons', key],
+            inject: true,
+        });
+        result.push(htmlWebpackPlugin);
+    }
+    return result;
+})(entry);
 
 module.exports = {
+
+    // 模式
+    mode: 'development',
 
     // 入口文件
     entry,
@@ -28,8 +39,7 @@ module.exports = {
     // 出口文件
     output: {
         filename: 'assets/js/[name].[hash].js',
-        // filename: 'assets/js/[name].js',
-        path: path.resolve(__dirname, '../dist'),
+        path: resolve(__dirname, '../dist'),
     },
 
     // loader 配置
@@ -56,9 +66,15 @@ module.exports = {
             },
             // js
             {
-                test: /\./,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
+            },
+            // html
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                loader: 'html-loader',
             },
             // 图片
             {
@@ -68,15 +84,27 @@ module.exports = {
                 options: {
                     limit: 4 * 1024,
                     filename: '[name][hash:4].[ext]',
-                    outputPath: '',
+                    outputPath: 'assets/images',
                 },
             },
             // 其他文件
             {
-
+                exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
+                loader: 'file-loader',
+                options: {
+                    filename: '[name][hash:4].[ext]',
+                    outputPath: 'assets/media',
+                },
             },
         ]
     },
 
-    mode: 'development',
+    // 插件
+    plugins: [
+        ...arrHtmlWebpackPlugin,
+        // new MiniCssExtractPlugin({
+        //     filename: 'css/[name][contenthash:8].css',
+        // }),
+    ]
+
 };
