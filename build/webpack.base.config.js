@@ -91,7 +91,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 4 * 1024,
-                    filename: '[name][hash:4].[ext]',
+                    name: '[name][hash:10].[ext]',
                     outputPath: 'assets/images',
                 },
             },
@@ -100,7 +100,7 @@ module.exports = {
                 exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
                 loader: 'file-loader',
                 options: {
-                    filename: '[name][hash:4].[ext]',
+                    name: '[name][hash:4].[ext]',
                     outputPath: 'assets/media',
                 },
             },
