@@ -31,9 +31,6 @@ const arrHtmlWebpackPlugin = ((entry) => {
 
 module.exports = {
 
-    // 模式
-    mode: 'development',
-
     // 入口文件
     entry,
 
@@ -53,25 +50,6 @@ module.exports = {
     // loader 配置
     module: {
         rules: [
-            // css 样式
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                ],
-            },
-            // sass 样式
-            {
-                test: /\.s(c|a)ss$/,
-                exclude: /node_modules/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                ],
-            },
             // js
             {
                 test: /\.js$/,
@@ -100,7 +78,7 @@ module.exports = {
                 exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name][hash:4].[ext]',
+                    name: '[name].[hash:4].[ext]',
                     outputPath: 'assets/media',
                 },
             },
@@ -111,22 +89,5 @@ module.exports = {
     plugins: [
         ...arrHtmlWebpackPlugin,
     ],
-
-    // devServer
-    // 自动编译，自动打开浏览器，字段刷新浏览器
-    // 特点：只会在内存中编译打包，不会有任何输出
-    // 启动 devServer 指令为：webpack-dev-server
-    devServer: {
-        // 运行的目录
-        contentBase: resolve(__dirname, 'dist'),
-        // 启动 gzip 压缩
-        compress: true,
-        // 服务端口
-        port: 3000,
-        // 自动打开浏览器
-        open: true,
-        // 开启 hot
-        hot: true,
-    },
 
 };

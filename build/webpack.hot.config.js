@@ -2,8 +2,6 @@
 const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 // 基础配置
 const webpackBaseConfig = require('./webpack.base.config');
 
@@ -20,12 +18,7 @@ module.exports = merge(webpackBaseConfig, {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../',
-                        },
-                    },
+                    'style-loader',
                     'css-loader',
                 ],
             },
@@ -34,24 +27,28 @@ module.exports = merge(webpackBaseConfig, {
                 test: /\.s(c|a)ss$/,
                 exclude: /node_modules/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../',
-                        },
-                    },
+                    'style-loader',
                     'css-loader',
                     'sass-loader',
                 ],
             },
-        ]
+        ],
     },
 
-    // 插件
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-        }),
-    ],
-
+    // devServer
+    // 自动编译，自动打开浏览器，字段刷新浏览器
+    // 特点：只会在内存中编译打包，不会有任何输出
+    // 启动 devServer 指令为：webpack-dev-server
+    devServer: {
+        // 运行的目录
+        contentBase: resolve(__dirname, 'dist'),
+        // 启动 gzip 压缩
+        compress: true,
+        // 服务端口
+        port: 3000,
+        // 自动打开浏览器
+        open: true,
+        // 开启 hot
+        hot: true,
+    },
 });
