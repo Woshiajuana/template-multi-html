@@ -23,6 +23,7 @@ h1{
 p{
     @extend %tac;
     @extend %c6;
+    display: flex;
     font-size: 14px;
     margin-top: 10px;
 }
