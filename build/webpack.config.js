@@ -10,9 +10,7 @@ const webpackDevConfig = require('./webpack.dev.config');
 // 生产配置
 const webpackProdConfig = require('./webpack.dev.config');
 
-let webpackConfig;
-
-console.log('process.env.NODE_ENV => ', process.env.NODE_ENV);
+let webpackConfig = webpackBaseConfig;
 
 if (process.env.NODE_ENV === 'development') {
     webpackConfig = merge(webpackBaseConfig, webpackDevConfig);
