@@ -47,7 +47,8 @@ module.exports = merge(webpackBaseConfig, {
         // 服务端口
         port: 3000,
         // 自动打开浏览器
-        open: true,
+        open: false,
+        inline: true,
         // 开启 hot
         hot: true,
     },

@@ -1,6 +1,5 @@
 
 import './index.scss'
-import './index.html'
 
 const add = (x, y) => x + y;
 
