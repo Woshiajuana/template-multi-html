@@ -11,9 +11,7 @@ const entry = generateEntry(resolve(__dirname, '../src/views'));
 // 生成多入口模板 html 文件 插件
 const arrHtmlWebpackPlugin = ((entry) => {
     let result = [];
-    let htmlEntry = {};
     for (let key in entry) {
-        htmlEntry[`${key}_html`] = entry[key].replace('index.js', 'index.html')
         const htmlWebpackPlugin = new HtmlWebpackPlugin({
             filename: `${key}.html`,
             template: entry[key].replace('index.js', 'index.html'),
@@ -27,10 +25,8 @@ const arrHtmlWebpackPlugin = ((entry) => {
         });
         result.push(htmlWebpackPlugin);
     }
-    Object.assign(entry, htmlEntry);
     return result;
 })(entry);
-
 
 module.exports = {
 
