@@ -36,6 +36,7 @@
     "mini-css-extract-plugin": "^1.0.0",
     "node-dir": "^0.1.17",
     "node-sass": "^5.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-loader": "^4.1.0",
     "postcss-preset-env": "^6.7.0",
     "require-context": "^1.1.0",
@@ -47,12 +48,12 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.4.0"
   },
-    "browserslist": [
-        "defaults",
-        "not ie <= 8",
-        "last 2 versions",
-        "> 1%",
-        "iOS 7",
-        "last 3 iOS versions"
-    ]
+  "browserslist": [
+    "defaults",
+    "not ie <= 8",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }
