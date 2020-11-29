@@ -62,7 +62,6 @@ module.exports = {
                 loader: resolve(__dirname, 'art-template-loader'),
                 options: {
                     resolveFilename (path, context) {
-                        console.log('path ===> ', path);
                         /^src/.test(path) && (path = path.replace(/^src/, resolve(__dirname, '../src')));
                         return resolveFilename(path, context);
                     },

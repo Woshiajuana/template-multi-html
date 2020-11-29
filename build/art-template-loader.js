@@ -25,7 +25,6 @@ const loader = function (source) {
 		} else {
             code = JSON.stringify(match);
 		}
-        console.log('code => ', url, code);
 		return {
 			output,
 			code

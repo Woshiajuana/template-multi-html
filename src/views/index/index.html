@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>WoW</title>
-    <% include('src/components/head-component/index.html') %>
-</head>
-<body>
 
-    <% include('src/components/header-component/index.html') %>
+{{extend 'src/layout/layout.html'}}
+
+{{block 'title'}}template-multi-html{{/block}}
+
+{{block 'content'}}
+
+    {{ include 'src/components/header-component/index.html' }}
 
     <img class="logo" src="~src/assets/images/wow.png">
     <h1>WoW</h1>
     <p>template-multi-html</p>
     <i></i>
 
-    <% include('src/components/footer-component/index.html') %>
+    {{ include 'src/components/footer-component/index.html' }}
 
-</body>
-</html>
+{{/block}}
