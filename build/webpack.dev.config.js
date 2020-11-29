@@ -4,6 +4,7 @@ const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 // 基础配置
 const webpackBaseConfig = require('./webpack.base.config');
@@ -74,6 +75,7 @@ module.exports = merge(webpackBaseConfig, {
 
     // 插件
     plugins: [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].[hash:10].css',
         }),
