@@ -2,7 +2,7 @@
 const { resolve } = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const resolveFilename = require('art-template/lib/compile/adapter/resolve-filename.js');
 const { generateEntry } = require('./utils');
 
 // 生成入口文件
@@ -52,15 +52,29 @@ module.exports = {
             // js
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: [
+                    /node_modules/,
+                    // /flexible.js/,
+                ],
                 loader: 'babel-loader',
             },
             // html
-            // {
-            //     test: /\.html$/,
-            //     exclude: /node_modules/,
-            //     loader: 'html-loader',
-            // },
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                loader: resolve(__dirname, 'art-template-loader'),
+                options: {
+                    resolveFilename (path, context) {
+                        console.log('path ===> ', path);
+                        /^src/.test(path) && (path = path.replace(/^src/, resolve(__dirname, '../src')));
+                        return resolveFilename(path, context);
+                    },
+                    exclude: [
+                        /flexible.js$/,
+                    ],
+                    htmlResourceRules: [/\bsrc="([^"]*)"/]
+                }
+            },
             // 图片
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -68,19 +82,20 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 4 * 1024,
+                    esModule: false,
                     name: '[name][hash:10].[ext]',
                     outputPath: 'assets/images',
                 },
             },
             // 其他文件
-            // {
-            //     exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
-            //     loader: 'file-loader',
-            //     options: {
-            //         name: '[name].[hash:4].[ext]',
-            //         outputPath: 'assets/media',
-            //     },
-            // },
+            {
+                exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[hash:4].[ext]',
+                    outputPath: 'assets/media',
+                },
+            },
         ]
     },
 

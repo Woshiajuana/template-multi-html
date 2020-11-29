@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
     <title>WoW</title>
-    ${require('html-loader!src/components/head-section/index.html')}
+    <% include('src/components/head-component/index.html') %>
 </head>
 <body>
-<%= require('html-loader!src/components/header-component/index.html')  %>
 
-    ${require('html-loader!src/components/head-component/index.html')}
+    <% include('src/components/header-component/index.html') %>
 
     <img class="logo" src="~src/assets/images/wow.png">
     <h1>WoW</h1>
     <p>template-multi-html</p>
     <i></i>
 
-    ${require('html-loader!src/components/footer-component/index.html')}
-    ${require('html-loader!src/components/footer-component/index.html')}
+    <% include('src/components/footer-component/index.html') %>
 
 </body>
 </html>
