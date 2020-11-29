@@ -1,0 +1,8 @@
+
+@import '~src/assets/scss/define.scss';
+
+footer{
+    @extend %c9;
+    font-size: j(30) !important;
+    padding: 0 j(20);
+}
