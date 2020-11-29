@@ -73,8 +73,16 @@ module.exports = merge(webpackBaseConfig, {
     // 插件
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
+            filename: 'assets/css/[name].[contenthash:8].css',
         }),
     ],
+
+    //
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 1 * 1,
+        }
+    }
 
 });
