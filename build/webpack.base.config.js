@@ -56,11 +56,11 @@ module.exports = {
                 loader: 'babel-loader',
             },
             // html
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                loader: 'html-loader',
-            },
+            // {
+            //     test: /\.html$/,
+            //     exclude: /node_modules/,
+            //     loader: 'html-loader',
+            // },
             // 图片
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -73,14 +73,14 @@ module.exports = {
                 },
             },
             // 其他文件
-            {
-                exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[hash:4].[ext]',
-                    outputPath: 'assets/media',
-                },
-            },
+            // {
+            //     exclude: /\.(css|scss|sass|js|html|png|jpe?g|gif)/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name: '[name].[hash:4].[ext]',
+            //         outputPath: 'assets/media',
+            //     },
+            // },
         ]
     },
 
