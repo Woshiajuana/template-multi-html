@@ -1,7 +1,9 @@
 
-const { merge } = require('webpack-merge');
+const { resolve } = require('path');
 
+const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // 基础配置
 const webpackBaseConfig = require('./webpack.base.config');
@@ -74,6 +76,16 @@ module.exports = merge(webpackBaseConfig, {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].[hash:10].css',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    // 定义要拷贝的源目录
+                    from: resolve(__dirname, '../src/assets/lib'),
+                    // 定义要拷贝到的目标目录
+                    to: resolve(__dirname, '../dist/assets/lib'),
+                },
+            ],
         }),
     ],
 
