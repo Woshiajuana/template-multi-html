@@ -52,10 +52,7 @@ module.exports = {
             // js
             {
                 test: /\.js$/,
-                exclude: [
-                    /node_modules/,
-                    // /flexible.js/,
-                ],
+                exclude: /node_modules/,
                 loader: 'babel-loader',
             },
             // html
@@ -69,6 +66,7 @@ module.exports = {
                         /^src/.test(path) && (path = path.replace(/^src/, resolve(__dirname, '../src')));
                         return resolveFilename(path, context);
                     },
+                    // 扩展出来，排除一些不需要的 js 资源引入
                     exclude: [
                         /flexible.js$/,
                     ],
