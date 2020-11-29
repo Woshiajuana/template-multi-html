@@ -1,6 +1,7 @@
 
 import './index.scss'
 
+import 'src/assets/lib/flexible'
 import 'src/components/header-component'
 import 'src/components/footer-component'
 
