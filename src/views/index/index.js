@@ -1,7 +1,8 @@
 
 import './index.scss'
 
-import 'src/components/other'
+import 'src/components/header-component'
+import 'src/components/footer-component'
 
 import add from 'src/utils/add'
 import mul from 'src/utils/mul'
