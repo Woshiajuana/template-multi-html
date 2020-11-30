@@ -69,7 +69,6 @@ module.exports = {
                     exclude: [
                         /flexible.js$/,
                     ],
-                    htmlResourceRules: [/\bsrc="([^"]*)"/]
                 }
             },
             // 图片
