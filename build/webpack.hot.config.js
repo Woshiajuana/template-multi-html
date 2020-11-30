@@ -41,7 +41,7 @@ module.exports = merge(webpackBaseConfig, {
     // 启动 devServer 指令为：webpack-dev-server
     devServer: {
         // 运行的目录
-        contentBase: resolve(__dirname, 'src/assets'),
+        contentBase: resolve(__dirname, '../dist/'),
         // 启动 gzip 压缩
         compress: true,
         // 服务端口
