@@ -6,33 +6,21 @@ body {
     background-color: #dddddd;
 }
 
-.logo{
-    @extend %db;
-    @extend %ma;
-    padding-top: 100px;
-    width: 100px;
-}
-
-h1{
-    @extend %tac;
-    @extend %c3;
-    margin-top: 20px;
-    font-size: 30px;
-}
-
-p{
+.prompt{
     @extend %tac;
     @extend %c6;
-    display: flex;
-    font-size: 14px;
-    margin-top: 10px;
+    line-height: 1.8;
+    font-size: j(16);
+    a{
+        text-decoration: underline;
+    }
 }
 
 i{
-    @extend %db;
-    @extend %ma;
+    @extend %dib;
     background: url("~src/assets/images/wow.png") center no-repeat;
     background-size: contain;
-    width: 20px;
-    height: 20px;
+    width: j(13);
+    height: j(13);
+    margin: 0 j(3);
 }

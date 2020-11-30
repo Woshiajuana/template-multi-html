@@ -3,6 +3,13 @@
 
 footer{
     @extend %c9;
-    font-size: j(30) !important;
-    padding: 0 j(20);
+    @extend %pf;
+    @extend %b0;
+    @extend %r0;
+    @extend %l0;
+    @extend %tac;
+    padding: j(40);
+    p{
+        font-size: j(13);
+    }
 }
