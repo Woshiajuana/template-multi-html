@@ -41,11 +41,11 @@ module.exports = merge(webpackBaseConfig, {
     // 启动 devServer 指令为：webpack-dev-server
     devServer: {
         // 运行的目录
-        contentBase: resolve(__dirname, '../dist/'),
+        contentBase: resolve(__dirname, '../src/'),
         // 启动 gzip 压缩
         compress: true,
         // 服务端口
-        port: 3000,
+        port: 9527,
         // 自动打开浏览器
         open: false,
         // 开启 hot
