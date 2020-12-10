@@ -42,6 +42,7 @@ module.exports = merge(webpackBaseConfig, {
     devServer: {
         // 运行的目录
         contentBase: resolve(__dirname, '../src/'),
+        host: '0.0.0.0',
         // 启动 gzip 压缩
         compress: true,
         // 服务端口
