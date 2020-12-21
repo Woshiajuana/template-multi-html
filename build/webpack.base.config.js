@@ -14,7 +14,7 @@ const arrHtmlWebpackPlugin = ((entry) => {
     for (let key in entry) {
         const htmlWebpackPlugin = new HtmlWebpackPlugin({
             filename: `${key}.html`,
-            template: entry[key].replace('index.js', 'index.html'),
+            template: entry[key].replace('index.js', 'html.js'),
             minify: {
                 removeAttributeQuotes: false, // 移除属性的引号
                 removeComments: false, // 移除注释
