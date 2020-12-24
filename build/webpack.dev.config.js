@@ -83,9 +83,9 @@ module.exports = merge(webpackBaseConfig, {
             patterns: [
                 {
                     // 定义要拷贝的源目录
-                    from: resolve(__dirname, '../src/assets/lib'),
+                    from: resolve(__dirname, '../public'),
                     // 定义要拷贝到的目标目录
-                    to: resolve(__dirname, '../dist/assets/lib'),
+                    to: resolve(__dirname, '../dist'),
                 },
             ],
         }),
