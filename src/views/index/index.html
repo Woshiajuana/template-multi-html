@@ -1,19 +1,16 @@
 
 {{extend 'src/layouts/layout.html'}}
 
-{{block 'title'}}template-multi-html{{/block}}
+{{block 'title'}}分享{{/block}}
 
 {{block 'content'}}
 
-    {{include 'src/components/header-component/index.html'}}
+<img src="~src/assets/images/head-bar.jpg" class="head-bar">
 
-    <p class="prompt">WOW{{title}}<i></i>template-multi-html</p>
-    <p class="prompt">v1.0.0</p>
-    <p class="prompt">
-        <a href="https://github.com/Woshiajuana/template-multi-html" target="_blank">GitHub</a>
-        <a href="https://ajuan.owulia.com/" target="_blank">Blog</a>
-    </p>
+<img src="~src/assets/images/share-bg.jpg" class="share-image">
 
-    {{include 'src/components/footer-component/index.html'}}
+<p class="prompt">保存并邀请客户加入嘉实多"嘉赢联盟"</p>
+
+<p class="tips">*二维码有效期 2012-12-12 12:12:12</p>
 
 {{/block}}
