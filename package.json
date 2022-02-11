@@ -40,7 +40,7 @@
     "loader-utils": "^2.0.0",
     "mini-css-extract-plugin": "^1.0.0",
     "node-dir": "^0.1.17",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-loader": "^4.1.0",
     "postcss-preset-env": "^6.7.0",
